@@ -60,9 +60,7 @@ const FormSchema = z.object({
       `;
     } catch (error) {
       // If a database error occurs, return a more specific error.
-      return {
-        message: 'Database Error: Failed to Create Invoice.',
-      };
+      console.log(error)
     }
    
     // Revalidate the cache for the invoices page and redirect the user.
@@ -102,7 +100,7 @@ export async function updateInvoice(
         WHERE id = ${id}
       `;
     } catch (error) {
-      return { message: 'Database Error: Failed to Update Invoice.' };
+      console.log(error)
     }
    
     revalidatePath('/dashboard/invoices');
